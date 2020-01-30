@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app2/screens/secondview.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -12,7 +13,6 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       appBar: AppBar(
         elevation: 20.0,
         centerTitle: true,
@@ -50,6 +50,7 @@ class _HomeState extends State<Home> {
           Container(
             margin: EdgeInsets.only(left: 30.0),
             child: FloatingActionButton(
+              heroTag: 'btn_exposure_zero',
               child: Icon( Icons.exposure_zero),
               onPressed: (){setState(() {
                 result=0;
@@ -59,6 +60,7 @@ class _HomeState extends State<Home> {
           ),
           Expanded( child:SizedBox() ),
           FloatingActionButton(
+            heroTag: 'btn_remove',
             child: Icon(Icons.remove),
             onPressed: (){setState(() {
               result--;
@@ -66,10 +68,22 @@ class _HomeState extends State<Home> {
           ),
           SizedBox(width: 5.0,),
           FloatingActionButton(
+            heroTag: 'btn_add',
             child: Icon(Icons.add),
             onPressed: (){setState(() {
               result++;
             });},
+          ),
+          SizedBox(width: 5.0,),
+          FlatButton(
+            
+            child: Icon(Icons.arrow_forward),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SecondView()),
+              );
+            }
           ),
           SizedBox(width: 5.0,),
         ],
